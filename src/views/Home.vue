@@ -71,3 +71,9 @@ export default {
 	},
 }
 </script>
+<style lang="less">
+.home {
+	width: 588px;
+	margin: 0 auto;
+}
+</style>
