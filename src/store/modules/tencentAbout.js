@@ -31,10 +31,6 @@ const tencentAbout = {
 	mutations: {
 		handleNcovCity(state, data) {
 			const cities = data.areaTree[0].children
-			state.caseReport = []
-			state.mapChinaNow = []
-			state.mapChinaAll = []
-			state.caseCollectChina = []
 			for (const city of cities) {
 				// 拼接成echarts需要的格式 { name: "北京", value: 1000 }
 				const temp = {

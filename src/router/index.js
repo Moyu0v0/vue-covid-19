@@ -11,15 +11,15 @@ const routes = [
 		component: Home,
 	},
 	{
-		path: '/springtravel/:citys',
-		name: 'springtravel',
-		component: () => import('@/views/SpringTravelView'),
+		path: '/Policy/:citys',
+		name: 'policy',
+		component: () => import('@/views/Policy'),
 		props: true,
 	},
 	{
-		path: '/queryvity/:city',
-		name: 'querycity',
-		component: () => import('@/views/QueryCityView'),
+		path: '/HSJG/:city',
+		name: 'hsjg',
+		component: () => import('@/views/HSJG'),
 		props: true,
 	},
 ]

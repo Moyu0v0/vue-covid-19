@@ -56,7 +56,6 @@ const tianAbout = {
 			// 获取中高风险地区
 			state.riskarea = data.riskarea
 			// 获取新闻数据
-			state.news = [] // 数组清零 否则数据会叠加
 			let temp = {}
 			for (let i = 0; i < data.news.length; i++) {
 				temp = data.news[i]
