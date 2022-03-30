@@ -3,5 +3,8 @@
 		<router-view />
 	</div>
 </template>
-
-<style></style>
+<style lang="less">
+#app {
+	background-color: #1989fa;
+}
+</style>

@@ -1,91 +1,92 @@
 <template>
-	<div class="header">
-		<p class="title">疫情速报</p>
-		<span>该数据为31个省（自治区、直辖市）和不含港澳台的本土新增病例</span>
+	<div class="casereport">
+		<div class="header">
+			<p class="title">疫情速报</p>
+			<span>该数据为31省（自治区、直辖市）本土新增，及港澳台新增确诊数据</span>
+		</div>
 		<div class="main">
 			<van-row gutter="1" class="top">
-				<van-col span="10" style="border-right: 0.5px solid #fff">地区</van-col>
-				<van-col span="7" style="border-right: 0.5px solid #fff">新增本土</van-col>
+				<van-col span="10" class="rightborder">地区</van-col>
+				<van-col span="7" class="rightborder">新增本土</van-col>
 				<van-col span="7">现有病例</van-col>
 			</van-row>
 			<!-- 展示前十条数据 -->
-			<van-row v-for="item in cityData1" :key="item.id" class="body">
-				<van-col span="10"
-					>{{ item.name }}
-					<van-tag plain round type="primary">{{ item.province }}</van-tag></van-col
-				>
+			<van-row v-for="item in caseReportPart1" :key="item.id" class="body">
+				<van-col span="10">
+					{{ item.name }}
+					<van-tag plain round type="primary">{{ item.province }}</van-tag>
+				</van-col>
 				<van-col span="7" class="blue">{{ item.todayConfirm }}</van-col>
 				<van-col span="7">{{ item.nowConfirm }}</van-col>
 			</van-row>
 			<!-- 展示后面剩余的数据 -->
-			<van-row v-show="!isShow" @click="switchShow">
-				<van-col span="24">展开全部<van-icon name="arrow-down"></van-icon></van-col>
+			<van-row v-show="!isShow" @click="isShow = !isShow">
+				展开全部<van-icon name="arrow-down" class="body"></van-icon>
 			</van-row>
-			<template v-if="isShow">
-				<van-row v-for="item in cityData2" :key="item.id" class="body">
-					<van-col span="10"
-						>{{ item.name }}
-						<van-tag plain round type="primary">{{ item.province }}</van-tag></van-col
-					>
-					<van-col span="7" class="blue">{{ item.todayConfirm }}</van-col>
-					<van-col span="7">{{ item.nowConfirm }}</van-col>
-				</van-row>
-			</template>
-			<van-row v-show="isShow" @click="switchShow">
-				<van-col span="24">收起<van-icon name="arrow-up"></van-icon></van-col>
+			<van-row v-show="isShow" v-for="item in caseReportPart2" :key="item.id" class="body">
+				<van-col span="10" class="area">
+					{{ item.name }}
+					<van-tag plain round type="primary">{{ item.province }}</van-tag>
+				</van-col>
+				<van-col span="7" class="blue">{{ item.todayConfirm }}</van-col>
+				<van-col span="7">{{ item.nowConfirm }}</van-col>
+			</van-row>
+			<van-row v-show="isShow" @click="isShow = !isShow" class="body">
+				收起<van-icon name="arrow-up"></van-icon>
 			</van-row>
 		</div>
 	</div>
 </template>
 
 <script>
-// import api from "../api/index";
+import { mapState } from 'vuex'
 export default {
 	name: 'CaseReport',
-	props: ['cityData'],
 	data() {
 		return {
 			isShow: false,
 		}
 	},
 	computed: {
-		cityData1() {
-			return this.cityData.slice(0, 10)
+		...mapState('tencentAbout', ['caseReport']),
+		caseReportPart1() {
+			return this.caseReport.slice(0, 10)
 		},
-		cityData2() {
-			return this.cityData.slice(10)
-		},
-	},
-	methods: {
-		switchShow() {
-			this.isShow = !this.isShow
+		caseReportPart2() {
+			return this.caseReport.slice(10)
 		},
 	},
 }
 </script>
 
 <style scoped lang="less">
-.header {
-	padding: 10px;
-	background: #fff;
-	.title {
-		font-size: 16px;
-		font-weight: 900;
-		color: black;
+.casereport {
+	.header {
+		padding: 10px;
+		background: #fff;
+		.title {
+			font-size: 18px;
+			font-weight: 900;
+			color: black;
+		}
 	}
 	.main {
 		text-align: center;
+		background-color: #fff;
+		padding: 0 10px;
 		.top {
-			background-color: rgb(236, 234, 234);
-			height: 25px;
-			line-height: 25px;
-			border-radius: 5px;
-		}
-		.body {
+			background-color: #f5f6f7;
 			height: 30px;
 			line-height: 30px;
-			font-weight: 700;
-			border-bottom: 0.1px solid rgb(245, 243, 243);
+			border-radius: 5px;
+			.rightborder {
+				border-right: 1px solid #fff;
+			}
+		}
+		.body {
+			height: 40px;
+			line-height: 40px;
+			border-bottom: 0.1px solid #ebedf0;
 			.blue {
 				color: #1989fa;
 			}

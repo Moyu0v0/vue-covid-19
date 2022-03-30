@@ -14,9 +14,11 @@ const tianAbout = {
 		riskarea: {},
 		// 最新消息
 		news: [],
-		// 世界疫情
-		nationsNow: [],
-		nationsAll: [],
+		// 世界疫情地图
+		mapWorldNow: [],
+		mapWorldAll: [],
+		// 国外各国家疫情统计汇总
+		caseCollectWorld: [],
 	},
 	actions: {
 		getNcov(context) {
@@ -64,23 +66,37 @@ const tianAbout = {
 		},
 		// 获取国家数据并拼接成echarts需要的格式 { name: "中国", value: 1000 }
 		handleNcovAboard(state, data) {
-			state.nationsNow = [] // 数组清零 否则数据会叠加
-			state.nationsAll = [] // 数组清零 否则数据会叠加
-			for (let i = 0; i < data.newslist.length; i++) {
-				let temp = {
+			state.mapWorldNow = [] // 数组清零 否则数据会叠加
+			state.mapWorldAll = [] // 数组清零 否则数据会叠加
+			for (const nation of data.newslist) {
+				const temp = {
 					// 国家名
-					name: data.newslist[i].provinceName,
+					name: nation.provinceName,
 					// 现存确诊人数
-					value: data.newslist[i].currentConfirmedCount,
+					value: nation.currentConfirmedCount,
 				}
-				let temp1 = {
+				const temp1 = {
 					// 国家名
-					name: data.newslist[i].provinceName,
+					name: nation.provinceName,
 					// 累计确诊人数
-					value: data.newslist[i].confirmedCount,
+					value: nation.confirmedCount,
 				}
-				state.nationsNow.push(temp)
-				state.nationsAll.push(temp1)
+				const temp3 = {
+					id: nation.locationId,
+					// 国家名
+					name: nation.provinceName,
+					// 现存确诊
+					currentConfirm: nation.currentConfirmedCount,
+					// 累计确诊
+					totalConfirm: nation.confirmedCount,
+					// 累计治愈
+					totalHeal: nation.curedCount,
+					// 累计死亡
+					totalDead: nation.deadCount,
+				}
+				state.mapWorldNow.push(temp)
+				state.mapWorldAll.push(temp1)
+				state.caseCollectWorld.push(temp3)
 			}
 		},
 	},

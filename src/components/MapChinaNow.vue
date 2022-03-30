@@ -7,9 +7,9 @@
 
 export default {
 	name: 'MapChinaNow',
-	props: ['provinceNow'],
+	props: ['mapChinaNow'],
 	watch: {
-		provinceNow: {
+		mapChinaNow: {
 			handler(newValue) {
 				this.$charts.MapChina('MapChinaNow', newValue, '现存确诊')
 			},
@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 #MapChinaNow {
-	width: 580px;
-	height: 600px;
+	width: 734px;
+	height: 562px;
 }
 </style>

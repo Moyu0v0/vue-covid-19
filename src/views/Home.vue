@@ -1,44 +1,45 @@
 <template>
 	<div class="home">
-		<van-tabs v-model="active" color="#2780f1" scrollspy sticky>
-			<!-- 头部 -->
-			<Header></Header>
-			<!-- 病毒信息 现在接口不返回病毒信息了-->
-			<!-- <Covid19Info :infoChina="infoChina"></Covid19Info> -->
-			<!-- 实时播报 -->
-			<News :news="news"></News>
-			<van-tab title="国内疫情">
-				<!-- 国内疫情 -->
-				<CaseNum :infoChina="infoChina"></CaseNum>
-				<!-- 疫情速报 -->
-				<CaseReport :cityData="cityData"></CaseReport>
-				<!-- 中国疫情地图 -->
-				<MapChina :provinceNow="provinceNow" :provinceAll="provinceAll"></MapChina>
-			</van-tab>
-			<van-tab title="国际疫情">
-				<!-- 世界疫情地图 -->
-				<MapWorld :nationsNow="nationsNow" :nationsAll="nationsAll"></MapWorld>
-			</van-tab>
-			<van-tab title="出行防疫">
-				<!-- 春节各地行出行防疫政策 -->
-				<!-- <SpringTravel></SpringTravel> -->
-			</van-tab>
-		</van-tabs>
-		<Note></Note>
+		<!-- <van-tabs v-model="active" color="#2780f1" scrollspy sticky> -->
+		<!-- 头部 -->
+		<Header></Header>
+		<!-- 实时播报 -->
+		<News></News>
+		<!-- <van-tab title="国内疫情"> -->
+		<!-- 国内疫情 -->
+		<CaseNum></CaseNum>
+		<!-- 疫情速报 -->
+		<CaseReport></CaseReport>
+		<!-- 中国疫情地图 -->
+		<MapChina></MapChina>
+		<!-- 国内各地区疫情统计汇总 -->
+		<CaseCollectChina></CaseCollectChina>
+		<!-- </van-tab> -->
+		<!-- <van-tab title="国际疫情"> -->
+		<!-- 世界疫情地图 -->
+		<MapWorld></MapWorld>
+		<!-- 国外各国家疫情统计汇总 -->
+		<CaseCollectWorld></CaseCollectWorld>
+		<!-- </van-tab>
+			<van-tab title="出行防疫"> -->
+		<!-- 春节各地行出行防疫政策 -->
+		<!-- <SpringTravel></SpringTravel> -->
+		<!-- </van-tab> -->
+		<!-- </van-tabs> -->
 	</div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Header from '../components/Header'
-// import Covid19Info from '../components/Covid19Info'
 import News from '../components/News'
 import CaseNum from '../components/CaseNum'
 import CaseReport from '@/components/CaseReport'
 import MapChina from '@/components/MapChina'
+import CaseCollectChina from '@/components/CaseCollectChina'
 import MapWorld from '@/components/MapWorld'
+import CaseCollectWorld from '@/components/CaseCollectWorld'
 // import SpringTravel from '../components/SpringTravel'
-import Note from '@/components/Note'
 import { mapState } from 'vuex'
 export default {
 	name: 'Home',
@@ -50,8 +51,9 @@ export default {
 		CaseReport,
 		// SpringTravel,
 		MapChina,
+		CaseCollectChina,
 		MapWorld,
-		Note,
+		CaseCollectWorld,
 	},
 	data() {
 		return {
@@ -59,21 +61,21 @@ export default {
 		}
 	},
 	computed: {
-		// 从天行API获取来的数据
-		...mapState('tianAbout', ['infoChina', 'riskarea', 'news', 'nationsNow', 'nationsAll']),
 		// 从腾讯API获取来的数据
-		...mapState('tencentAbout', ['cityData', 'provinceNow', 'provinceAll']),
+		...mapState('tencentAbout', ['provinceNow', 'provinceAll']),
 	},
-	mounted() {
+	created() {
 		this.$store.dispatch('tianAbout/getNcov')
 		this.$store.dispatch('tianAbout/getNcovAboard')
-		this.$store.dispatch('tencentAbout/getNcovCity1')
+		this.$store.dispatch('tencentAbout/getNcovCity')
 	},
 }
 </script>
 <style lang="less">
 .home {
-	width: 588px;
+	width: 768px;
 	margin: 0 auto;
+	padding: 0 10px;
+	background-color: #fff;
 }
 </style>

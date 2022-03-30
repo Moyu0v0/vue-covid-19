@@ -1,15 +1,22 @@
 <template>
-	<div class="map">
-		<van-tabs v-model="active" color="#2780f1" type="card">
-			<van-tab title="现存确诊"><MapWorldNow :nationsNow="nationsNow"></MapWorldNow></van-tab>
-			<van-tab title="累计确诊"><MapWorldAll :nationsAll="nationsAll"></MapWorldAll></van-tab>
-		</van-tabs>
+	<div class="worldmap">
+		<div class="tabs">
+			<van-tabs v-model="active" color="#1989fa" type="card">
+				<van-tab title="现存确诊"
+					><MapWorldNow :mapWorldNow="mapWorldNow"></MapWorldNow
+				></van-tab>
+				<van-tab title="累计确诊"
+					><MapWorldAll :mapWorldAll="mapWorldAll"></MapWorldAll
+				></van-tab>
+			</van-tabs>
+		</div>
 	</div>
 </template>
 
 <script>
 import MapWorldNow from '@/components/MapWorldNow'
 import MapWorldAll from '@/components/MapWorldAll'
+import { mapState } from 'vuex'
 export default {
 	name: 'MapWorld',
 	data() {
@@ -17,7 +24,9 @@ export default {
 			active: 2,
 		}
 	},
-	props: ['nationsNow', 'nationsAll'],
+	computed: {
+		...mapState('tianAbout', ['mapWorldNow', 'mapWorldAll']),
+	},
 	components: {
 		MapWorldNow,
 		MapWorldAll,

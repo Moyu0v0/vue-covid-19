@@ -48,9 +48,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
 	name: 'CaseNum',
-	props: ['infoChina', 'riskarea'],
+	computed: {
+		...mapState('tianAbout', ['infoChina']),
+	},
 	methods: {
 		// 格式化日期
 		formatDate(date) {
@@ -85,13 +88,13 @@ export default {
 	padding: 10px;
 	background: #fff;
 	.title {
-		font-size: 16px;
+		font-size: 18px;
 		font-weight: 900;
 		color: black;
 	}
 }
 h3 {
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: 900;
 }
 .red {

@@ -3,20 +3,18 @@
 </template>
 
 <script>
-// import api from "@/api/index";
-
 export default {
 	name: 'MapChinaAll',
-	props: ['provinceAll'],
+	props: ['mapChinaAll'],
 	mounted() {
-		this.$charts.MapChina('MapChinaAll', this.provinceAll, '累计确诊')
+		this.$charts.MapChina('MapChinaAll', this.mapChinaAll, '累计确诊')
 	},
 }
 </script>
 
 <style scoped>
 #MapChinaAll {
-	width: 580px;
-	height: 600px;
+	width: 734px;
+	height: 562px;
 }
 </style>
