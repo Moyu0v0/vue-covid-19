@@ -5,13 +5,15 @@
 		<!-- 实时播报 -->
 		<News></News>
 		<!-- 国内疫情 -->
-		<CaseNum></CaseNum>
+		<CaseNumChina></CaseNumChina>
 		<!-- 疫情速报 -->
 		<CaseReport></CaseReport>
 		<!-- 中国疫情地图 -->
 		<MapChina></MapChina>
 		<!-- 国内各地区疫情统计汇总 -->
 		<CaseCollectChina></CaseCollectChina>
+		<!-- 国外疫情 -->
+		<CaseNumWorld></CaseNumWorld>
 		<!-- 世界疫情地图 -->
 		<MapWorld></MapWorld>
 		<!-- 国外各国家疫情统计汇总 -->
@@ -25,10 +27,11 @@
 // @ is an alias to /src
 import Header from '../components/Header'
 import News from '../components/News'
-import CaseNum from '../components/CaseNum'
+import CaseNumChina from '../components/CaseNumChina'
 import CaseReport from '@/components/CaseReport'
 import MapChina from '@/components/MapChina'
 import CaseCollectChina from '@/components/CaseCollectChina'
+import CaseNumWorld from '@/components/CaseNumWorld'
 import MapWorld from '@/components/MapWorld'
 import CaseCollectWorld from '@/components/CaseCollectWorld'
 import Query from '../components/Query'
@@ -38,10 +41,11 @@ export default {
 	components: {
 		Header,
 		News,
-		CaseNum,
+		CaseNumChina,
 		CaseReport,
 		MapChina,
 		CaseCollectChina,
+		CaseNumWorld,
 		MapWorld,
 		CaseCollectWorld,
 		Query,

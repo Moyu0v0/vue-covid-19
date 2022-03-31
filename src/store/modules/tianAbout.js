@@ -8,10 +8,10 @@ import { nanoid } from 'nanoid'
 const tianAbout = {
 	namespaced: true, //开启命名空间
 	state: {
-		// 病毒信息和全国病例统计
-		infoChina: {},
-		// 中高风险地区
-		riskarea: {},
+		// 国内疫情
+		caseNumChina: {},
+		// 国外疫情
+		caseNumWorld: {},
 		// 最新消息
 		news: [],
 		// 世界疫情地图
@@ -51,11 +51,13 @@ const tianAbout = {
 	},
 	mutations: {
 		handleNcov(state, data) {
-			// 获取病毒信息和全国病例统计
-			state.infoChina = data.desc
-			// 获取中高风险地区
-			state.riskarea = data.riskarea
-			// 获取新闻数据
+			console.log(data)
+			// 国内疫情
+			state.caseNumChina = data.desc
+			// 国外疫情
+			state.caseNumWorld = data.desc.foreignStatistics
+			state.caseNumWorld.modifyTime = data.desc.modifyTime
+			// 新闻速报
 			let temp = {}
 			for (let i = 0; i < data.news.length; i++) {
 				temp = data.news[i]
