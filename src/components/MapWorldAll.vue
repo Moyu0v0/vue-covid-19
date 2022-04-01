@@ -7,7 +7,6 @@ export default {
 	name: 'MapWorldAll',
 	props: ['mapWorldAll'],
 	mounted() {
-		console.log(this.$charts)
 		this.$charts.MapWorld('MapWorldAll', this.mapWorldAll, '累计确诊')
 	},
 }
@@ -15,7 +14,7 @@ export default {
 
 <style scoped>
 #MapWorldAll {
-	width: 734px;
+	width: 768px;
 	height: 562px;
 }
 </style>

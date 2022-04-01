@@ -14,7 +14,7 @@ export default {
 
 <style scoped>
 #MapChinaAll {
-	width: 734px;
+	width: 768px;
 	height: 562px;
 }
 </style>

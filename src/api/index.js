@@ -9,6 +9,7 @@ const base = {
 	springTravelQuery: '/springTravel/query',
 	springTravelhsjg: '/springTravel/hsjg',
 	wyBaseUrl: '/api3',
+	sinaBaseUrl: '/api4',
 }
 
 const api = {
@@ -46,9 +47,13 @@ const api = {
 			params,
 		})
 	},
-	// 获取每日数据 163的接口 需要配置代理服务器
+	// 获取每日数据 网易的接口 需要配置代理服务器
 	getDayList() {
 		return axios.get(base.wyBaseUrl)
+	},
+	// 获取境外输入top10 新浪的接口 需要配置代理服务器
+	getjwsrTop() {
+		return axios.get(base.sinaBaseUrl)
 	},
 }
 

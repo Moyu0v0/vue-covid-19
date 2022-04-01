@@ -25,6 +25,10 @@ module.exports = {
 				target: 'https://c.m.163.com/ug/api/wuhan/app/data/list-total',
 				pathRewrite: { '^/api3': '' },
 			},
+			'/api4': {
+				target: 'https://interface.sina.cn/news/wap/fymap2020_data.d.json',
+				pathRewrite: { '^/api4': '' },
+			},
 		},
 	},
 }

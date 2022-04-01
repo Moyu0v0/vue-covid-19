@@ -23,7 +23,6 @@ const wyAbout = {
 	},
 	mutations: {
 		handleDayList(state, data) {
-			console.log(data)
 			const temp1 = {
 				title: '全国 总新增确诊/新增境外输入确诊 趋势',
 				xAxisData: [],

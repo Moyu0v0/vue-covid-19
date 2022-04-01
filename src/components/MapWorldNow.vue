@@ -18,7 +18,7 @@ export default {
 
 <style scoped>
 #MapWorldNow {
-	width: 734px;
+	width: 768px;
 	height: 562px;
 }
 </style>

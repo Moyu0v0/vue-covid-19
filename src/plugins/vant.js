@@ -22,6 +22,7 @@ import {
 	GridItem,
 	Swipe,
 	SwipeItem,
+	Sticky,
 } from 'vant'
 
 // 使用Vants插件
@@ -47,3 +48,4 @@ Vue.use(Grid)
 Vue.use(GridItem)
 Vue.use(Swipe)
 Vue.use(SwipeItem)
+Vue.use(Sticky)

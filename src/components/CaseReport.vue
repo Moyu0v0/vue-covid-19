@@ -4,12 +4,14 @@
 			<p class="title">疫情速报</p>
 			<span>该数据为31省（自治区、直辖市）本土新增，及港澳台新增确诊数据</span>
 		</div>
-		<div class="main">
-			<van-row gutter="1" class="top">
-				<van-col span="10" class="rightborder">地区</van-col>
-				<van-col span="7" class="rightborder">新增本土</van-col>
-				<van-col span="7">现有病例</van-col>
-			</van-row>
+		<div class="main" ref="container">
+			<van-sticky :container="container" :offset-top="44">
+				<van-row gutter="1" class="top">
+					<van-col span="10" class="rightborder">地区</van-col>
+					<van-col span="7" class="rightborder">新增本土</van-col>
+					<van-col span="7">现有病例</van-col>
+				</van-row>
+			</van-sticky>
 			<!-- 展示前十条数据 -->
 			<van-row v-for="item in caseReportPart1" :key="item.id" class="body">
 				<van-col span="10">
@@ -46,6 +48,7 @@ export default {
 	data() {
 		return {
 			isShow: false,
+			container: null,
 		}
 	},
 	computed: {
@@ -62,6 +65,9 @@ export default {
 			return formatter.separator(num)
 		},
 	},
+	mounted() {
+		this.container = this.$refs.container
+	},
 }
 </script>
 
@@ -77,14 +83,16 @@ export default {
 		}
 	}
 	.main {
+		padding: 0 10px;
 		text-align: center;
 		background-color: #fff;
-		padding: 0 10px;
 		.top {
-			background-color: #f5f6f7;
+			width: 748px;
 			height: 30px;
 			line-height: 30px;
+			margin: 0 auto;
 			border-radius: 5px;
+			background-color: #f5f6f7;
 			.rightborder {
 				border-right: 1px solid #fff;
 			}

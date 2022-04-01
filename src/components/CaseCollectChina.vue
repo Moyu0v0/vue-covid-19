@@ -4,14 +4,16 @@
 			<p class="title">国内各地区疫情统计汇总</p>
 			<span>7:00-10:00为更新高峰，数据若滞后敬请谅解</span>
 		</div>
-		<div class="main">
-			<van-row gutter="1" class="top">
-				<van-col span="4" class="rightborder">地区</van-col>
-				<van-col span="5" class="rightborder">新增</van-col>
-				<van-col span="5" class="rightborder">累计</van-col>
-				<van-col span="5" class="rightborder">治愈</van-col>
-				<van-col span="5">死亡</van-col>
-			</van-row>
+		<div class="main" ref="container">
+			<van-sticky :container="container" :offset-top="44">
+				<van-row gutter="1" class="top">
+					<van-col span="4" class="rightborder">地区</van-col>
+					<van-col span="5" class="rightborder">新增</van-col>
+					<van-col span="5" class="rightborder">累计</van-col>
+					<van-col span="5" class="rightborder">治愈</van-col>
+					<van-col span="5">死亡</van-col>
+				</van-row>
+			</van-sticky>
 			<!-- 展示前20条数据 -->
 			<div v-for="item in caseCollectPart1" :key="item.name">
 				<van-row class="body">
@@ -94,6 +96,7 @@ export default {
 	data() {
 		return {
 			isShowAll: false,
+			container: null,
 		}
 	},
 	computed: {
@@ -109,6 +112,9 @@ export default {
 		separator(num) {
 			return formatter.separator(num)
 		},
+	},
+	mounted() {
+		this.container = this.$refs.container
 	},
 }
 </script>
@@ -129,9 +135,10 @@ export default {
 		background-color: #fff;
 		padding: 0 10px;
 		.top {
+			width: 748px;
 			height: 30px;
 			line-height: 30px;
-			margin-bottom: 2px;
+			margin: 0 auto;
 			border-radius: 5px;
 			background-color: #f5f6f7;
 			.rightborder {

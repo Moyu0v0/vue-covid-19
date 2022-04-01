@@ -38,22 +38,18 @@ export default {
 					zoom: 1.2, // 地图缩放的标准比例
 					// 配置字体
 					label: {
-						normal: {
-							show: true, // 控制地图显示名字
-							textStyle: {
-								fontSize: 8,
-							},
-						},
+						show: true, // 控制地图显示名字
+						fontSize: 8,
 					},
 					// 配置图表样式
 					itemStyle: {
 						// 一般样式
-						normal: {
-							areaColor: 'rgba(0,255,236,0)',
-							borderColor: 'rgba(0,0,0,0.2)',
-						},
+						areaColor: 'rgba(0,255,236,0)',
+						borderColor: 'rgba(0,0,0,0.2)',
 						// 选中区域样式
-						emphasis: {
+					},
+					emphasis: {
+						itemStyle: {
 							areaColor: 'rgb(211, 253, 253)',
 							shadowOffsetX: 0,
 							shadowOffsetY: 0,
@@ -123,22 +119,20 @@ export default {
 					zoom: 1.2, // 地图缩放比例
 					label: {
 						// 配置字体
-						normal: {
-							show: false, // 控制地图显示名字
-							textStyle: {
-								fontSize: 8,
-							},
-						},
+
+						show: false, // 控制地图显示名字
+
+						fontSize: 8,
 					},
 					nameMap: nationName,
 					itemStyle: {
 						// 配置地图样式
-						normal: {
-							areaColor: 'rgba(0,255,236,0)',
-							borderColor: 'rgba(0,0,0,0.2)',
-						},
+						areaColor: 'rgba(0,255,236,0)',
+						borderColor: 'rgba(0,0,0,0.2)',
 						// 选中区域的样式
-						emphasis: {
+					},
+					emphasis: {
+						itemStyle: {
 							areaColor: 'rgb(211, 253, 253)',
 							shadowOffsetX: 0,
 							shadowOffsetY: 0,
@@ -163,7 +157,9 @@ export default {
 		const myChart = echarts.init(chartDom)
 		const option = {
 			title: {
+				left: '2%',
 				text: data.title,
+				subtext: '单位：例',
 			},
 			tooltip: {
 				trigger: 'axis',
@@ -174,6 +170,7 @@ export default {
 				data: [data.series[0].name, data.series[1].name],
 			},
 			grid: {
+				top: '15%',
 				left: '3%',
 				right: '4%',
 				bottom: '3%',
@@ -184,22 +181,10 @@ export default {
 					saveAsImage: {},
 				},
 			},
+			color: ['#ee0a24', '#ff976a'],
 			xAxis: {
 				type: 'category',
 				boundaryGap: false,
-				// data: [
-				// 	'2022-01-30',
-				// 	'2022-01-31',
-				// 	'2022-02-01',
-				// 	'2022-02-02',
-				// 	'2022-02-03',
-				// 	'2022-02-04',
-				// 	'2022-02-05',
-				// 	'2022-02-06',
-				// 	'2022-02-07',
-				// 	'2022-02-08',
-				// 	'2022-02-09',
-				// ],
 				data: data.xAxisData,
 			},
 			yAxis: {
@@ -210,17 +195,67 @@ export default {
 					name: data.series[0].name,
 					type: 'line',
 					smooth: true,
+					symbolSize: 0,
 					data: data.series[0].data,
 				},
 				{
 					name: data.series[1].name,
 					type: 'line',
 					smooth: true,
+					symbolSize: 0,
 					data: data.series[1].data,
 				},
 			],
 		}
 		option && myChart.setOption(option)
-		console.log('绘制图表')
+		console.log('绘制折线图')
+	},
+	// 绘制柱状图
+	histogram(id, data) {
+		const chartDom = document.getElementById(id)
+		const myChart = echarts.init(chartDom)
+		const option = {
+			title: {
+				text: data.title,
+				subtext: '单位：例',
+			},
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: {
+					type: 'shadow',
+				},
+			},
+			grid: {
+				left: '3%',
+				right: '4%',
+				bottom: '3%',
+				containLabel: true,
+			},
+			color: ['#ff976a'],
+			xAxis: [
+				{
+					type: 'category',
+					data: data.xAxisData,
+					axisTick: {
+						alignWithLabel: true,
+					},
+				},
+			],
+			yAxis: [
+				{
+					type: 'value',
+				},
+			],
+			series: [
+				{
+					name: '境外输入',
+					type: 'bar',
+					barWidth: '60%',
+					data: data.seriesData,
+				},
+			],
+		}
+		option && myChart.setOption(option)
+		console.log('绘制柱状图')
 	},
 }

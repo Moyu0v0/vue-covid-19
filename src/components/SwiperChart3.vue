@@ -21,7 +21,7 @@ export default {
 
 <style>
 #SwiperChart3 {
-	width: 765px;
+	width: 766px;
 	height: 520px;
 }
 </style>

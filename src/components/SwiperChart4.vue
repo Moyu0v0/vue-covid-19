@@ -1,18 +1,18 @@
 <template>
-	<div id="SwiperChart1"></div>
+	<div id="SwiperChart4"></div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 export default {
-	name: 'SwiperChart1',
+	name: 'SwiperChart4',
 	computed: {
-		...mapState('wyAbout', ['chart1']),
+		...mapState('sinaAbout', ['chart4']),
 	},
 	watch: {
-		chart1: {
+		chart4: {
 			handler(newValue) {
-				this.$charts.lineChart('SwiperChart1', newValue)
+				this.$charts.histogram('SwiperChart4', newValue)
 			},
 		},
 	},
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style>
-#SwiperChart1 {
+#SwiperChart4 {
 	width: 766px;
 	height: 520px;
 }
