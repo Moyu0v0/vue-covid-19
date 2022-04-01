@@ -1,7 +1,7 @@
 import * as echarts from 'echarts'
 import nationName from '@/plugins/nationName'
-import 'echarts/map/js/china'
-import 'echarts/map/js/world'
+import '@/plugins/china.js'
+import '@/plugins/world.js'
 
 export default {
 	// 绘制中国地图
