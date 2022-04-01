@@ -31,7 +31,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 文件结构
 
-```js
+```
 ├── public
 │   ├── favicon.ico: 页签图标
 │   └── index.html: 主页面
