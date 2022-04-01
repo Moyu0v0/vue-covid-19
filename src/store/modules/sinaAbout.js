@@ -7,14 +7,26 @@ const sinaAbout = {
 		chart4: {},
 	},
 	actions: {
-		getjwsrTop({ commit }) {
-			api.getjwsrTop()
-				.then(response => {
-					commit('handlejswrTop', response.data.data.jwsrTop)
-				})
-				.catch(err => {
-					console.log(err)
-				})
+		// 1. Promise
+		// getjwsrTop({ commit }) {
+		// 	api.getjwsrTop()
+		// 		.then(response => {
+		// 			commit('handlejswrTop', response.data.data.jwsrTop)
+		// 		})
+		// 		.catch(err => {
+		// 			console.log(err)
+		// 		})
+		// },
+		// 2. async、await
+		async getjwsrTop({ commit }) {
+			try {
+				const res = await api.getjwsrTop()
+				if (res.status === 200) {
+					commit('handlejswrTop', res.data.data.jwsrTop)
+				}
+			} catch (e) {
+				console.error(e)
+			}
 		},
 	},
 	mutations: {

@@ -13,19 +13,30 @@ const tencentAbout = {
 		caseCollectChina: [], // 国内各地区疫情统计汇总
 	},
 	actions: {
-		getNcovCity(context) {
-			api.getNocvCity({
-				// 传递query参数
-				name: 'disease_h5',
-			})
-				.then(response => {
-					if (JSON.parse(response.status) == 200) {
-						context.commit('handleNcovCity', JSON.parse(response.data.data))
-					}
-				})
-				.catch(error => {
-					console.log(error.message)
-				})
+		// 1. Promise
+		// getNcovCity(context) {
+		// 	api.getNocvCity({
+		// 		name: 'disease_h5',
+		// 	})
+		// 		.then(response => {
+		// 			if (JSON.parse(response.status) == 200) {
+		// 				context.commit('handleNcovCity', JSON.parse(response.data.data))
+		// 			}
+		// 		})
+		// 		.catch(error => {
+		// 			console.log(error.message)
+		// 		})
+		// },
+		// 2. async await
+		async getNcovCity({ commit }) {
+			try {
+				const res = await api.getNocvCity({ name: 'disease_h5' })
+				if (JSON.parse(res.status) == 200) {
+					commit('handleNcovCity', JSON.parse(res.data.data))
+				}
+			} catch (e) {
+				console.error(e)
+			}
 		},
 	},
 	mutations: {
@@ -46,8 +57,7 @@ const tencentAbout = {
 					value: city.total.confirm,
 				}
 				const temp3 = {
-					// 因为caseCollectChina是用v-for渲染的 需要绑定key
-					// id: nanoid(),
+					id: nanoid(),
 					// 省市名
 					name: city.name,
 					// 新增确诊人数
@@ -69,7 +79,6 @@ const tencentAbout = {
 					// 排除境外输入和新增病例为0的地区
 					if (children.today.confirm && children.name !== '境外输入') {
 						const temp = {
-							// 因为caseReport是用v-for渲染的 需要绑定key
 							id: nanoid(),
 							// 城市名称
 							name: children.name,

@@ -15,7 +15,7 @@
 				</van-row>
 			</van-sticky>
 			<!-- 展示前20条数据 -->
-			<div v-for="item in caseCollectPart1" :key="item.name">
+			<div v-for="item in caseCollectPart1" :key="item.id">
 				<van-row class="body">
 					<van-col span="4" class="blue" @click="item.isShowDetail = !item.isShowDetail">
 						<van-icon
@@ -50,7 +50,7 @@
 			<van-row v-show="!isShowAll" @click="isShowAll = !isShowAll">
 				展开全部<van-icon name="arrow-down" class="bottom" />
 			</van-row>
-			<div v-show="isShowAll" v-for="item in caseCollectPart2" :key="item.name">
+			<div v-show="isShowAll" v-for="item in caseCollectPart2" :key="item.id">
 				<van-row class="body">
 					<van-col span="4" class="blue" @click="item.isShowDetail = !item.isShowDetail">
 						<van-icon

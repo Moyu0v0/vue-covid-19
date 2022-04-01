@@ -21,32 +21,57 @@ const tianAbout = {
 		caseCollectWorld: [],
 	},
 	actions: {
-		getNcov(context) {
-			api.getNcov({
-				key: '1418c5d0819239adbb4f75c949f15f08',
-			})
-				.then(response => {
-					if (response.status === 200) {
-						context.commit('handleNcov', response.data.newslist[0])
-					}
+		// 1. Promise
+		// getNcov(context) {
+		// 	api.getNcov({
+		// 		key: '1418c5d0819239adbb4f75c949f15f08',
+		// 	})
+		// 		.then(response => {
+		// 			if (response.status === 200) {
+		// 				context.commit('handleNcov', response.data.newslist[0])
+		// 			}
+		// 		})
+		// 		.catch(error => {
+		// 			console.log(error.message)
+		// 		})
+		// },
+		// getNcovAboard(context) {
+		// 	api.getNcovAboard({
+		// 		key: '1418c5d0819239adbb4f75c949f15f08',
+		// 	})
+		// 		.then(response => {
+		// 			if (response.status === 200) {
+		// 				context.commit('handleNcovAboard', response.data)
+		// 			}
+		// 		})
+		// 		.catch(error => {
+		// 			console.log(error.message)
+		// 		})
+		// },
+		// 2. async、await
+		async getNcovAboard({ commit }) {
+			try {
+				const res = await api.getNcovAboard({
+					key: '1418c5d0819239adbb4f75c949f15f08',
 				})
-				.catch(error => {
-					console.log(error.message)
-				})
+				if (res.status === 200) {
+					commit('handleNcovAboard', res.data)
+				}
+			} catch (e) {
+				console.err(e)
+			}
 		},
-		getNcovAboard(context) {
-			api.getNcovAboard({
-				// 传递query参数
-				key: '1418c5d0819239adbb4f75c949f15f08',
-			})
-				.then(response => {
-					if (response.status === 200) {
-						context.commit('handleNcovAboard', response.data)
-					}
+		async getNcov({ commit }) {
+			try {
+				const res = await api.getNcov({
+					key: '1418c5d0819239adbb4f75c949f15f08',
 				})
-				.catch(error => {
-					console.log(error.message)
-				})
+				if (res.status === 200) {
+					commit('handleNcov', res.data.newslist[0])
+				}
+			} catch (e) {
+				console.err(e)
+			}
 		},
 	},
 	mutations: {
@@ -58,8 +83,8 @@ const tianAbout = {
 			state.caseNumWorld.modifyTime = data.desc.modifyTime
 			// 新闻速报
 			let temp = {}
-			for (let i = 0; i < data.news.length; i++) {
-				temp = data.news[i]
+			for (const news of data.news) {
+				temp = news
 				temp.id = nanoid()
 				state.news.push(temp)
 			}

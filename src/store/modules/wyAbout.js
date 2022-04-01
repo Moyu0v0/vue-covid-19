@@ -9,16 +9,28 @@ const wyAbout = {
 		chart3: {},
 	},
 	actions: {
-		getDayList({ commit }) {
-			api.getDayList()
-				.then(response => {
-					if (response.status === 200) {
-						commit('handleDayList', response.data.data)
-					}
-				})
-				.catch(error => {
-					console.log(error.message)
-				})
+		// 1. Promise
+		// getDayList({ commit }) {
+		// 	api.getDayList()
+		// 		.then(response => {
+		// 			if (response.status === 200) {
+		// 				commit('handleDayList', response.data.data)
+		// 			}
+		// 		})
+		// 		.catch(error => {
+		// 			console.log(error.message)
+		// 		})
+		// },
+		// 2. async、await
+		async getDayList({ commit }) {
+			try {
+				const res = await api.getDayList()
+				if (res.status === 200) {
+					commit('handleDayList', res.data.data)
+				}
+			} catch (e) {
+				console.err(e)
+			}
 		},
 	},
 	mutations: {
