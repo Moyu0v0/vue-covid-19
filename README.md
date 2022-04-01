@@ -115,9 +115,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 项目预览
 
-<img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h0ubdfuv2pj20u01jfq8z.jpg"  /><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h0ubegbl9tj20u01iztf5.jpg"  /><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h0ubeh3p8yj20u01khdml.jpg"  />
+<img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h0ubdfuv2pj20u01jfq8z.jpg"  style="zoom:50%;"/><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h0ubegbl9tj20u01iztf5.jpg"  style="zoom:50%;"/><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h0ubeh3p8yj20u01khdml.jpg"  style="zoom:50%;"/>
 
-<img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h0ubg0g2o8j20u016wwk2.jpg"  />
+<img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h0ubg0g2o8j20u016wwk2.jpg"  style="zoom:50%;"/>
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24egy1h0ubgdkghej20u00uttf4.jpg)
 
