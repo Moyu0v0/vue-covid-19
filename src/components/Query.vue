@@ -84,11 +84,10 @@ export default {
 		},
 	},
 	mounted() {
-		if (!sessionStorage.getItem('options')) {
+		if (!localStorage.getItem('options')) {
 			api.getCityName({
 				key: 'e9b4d95bcb942e342a309093c53c9943',
 			}).then(response => {
-				console.log('发送请求')
 				if (response.status == 200) {
 					// 拼接options选项列表
 					const options = []
@@ -109,12 +108,12 @@ export default {
 						options.push(provinceData)
 					}
 					this.options = options
-					// 存在sessionStorage中 防止发生多次请求(这个接口每天只允许请求50次)
-					sessionStorage.setItem('options', JSON.stringify(options))
+					// 存在localStorage中 防止发生多次请求(这个接口每天只允许请求50次)
+					localStorage.setItem('options', JSON.stringify(options))
 				}
 			})
 		} else {
-			this.options = JSON.parse(sessionStorage.getItem('options'))
+			this.options = JSON.parse(localStorage.getItem('options'))
 		}
 	},
 }

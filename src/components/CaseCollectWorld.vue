@@ -17,10 +17,10 @@
 				<van-col span="4" class="blue">
 					{{ item.name }}
 				</van-col>
-				<van-col span="5">{{ item.currentConfirm }}</van-col>
-				<van-col span="5">{{ item.totalConfirm }}</van-col>
-				<van-col span="5">{{ item.totalHeal }}</van-col>
-				<van-col span="5">{{ item.totalDead }}</van-col>
+				<van-col span="5">{{ separator(item.currentConfirm) }}</van-col>
+				<van-col span="5">{{ separator(item.totalConfirm) }}</van-col>
+				<van-col span="5">{{ separator(item.totalHeal) }}</van-col>
+				<van-col span="5">{{ separator(item.totalDead) }}</van-col>
 			</van-row>
 
 			<!-- 展示剩余的数据 -->
@@ -36,10 +36,10 @@
 				<van-col span="4" class="blue">
 					{{ item.name.slice(0, 8) }}
 				</van-col>
-				<van-col span="5">{{ item.currentConfirm }}</van-col>
-				<van-col span="5">{{ item.totalConfirm }}</van-col>
-				<van-col span="5">{{ item.totalHeal }}</van-col>
-				<van-col span="5">{{ item.totalDead }}</van-col>
+				<van-col span="5">{{ separator(item.currentConfirm) }}</van-col>
+				<van-col span="5">{{ separator(item.totalConfirm) }}</van-col>
+				<van-col span="5">{{ separator(item.totalHeal) }}</van-col>
+				<van-col span="5">{{ separator(item.totalDead) }}</van-col>
 			</van-row>
 
 			<van-row v-show="isShowAll" @click="isShowAll = !isShowAll" class="bottom">
@@ -51,6 +51,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import formatter from '@/plugins/formatter'
 export default {
 	name: 'CaseCollectWorld',
 	data() {
@@ -65,6 +66,11 @@ export default {
 		},
 		caseCollectPart2() {
 			return this.caseCollectWorld.slice(20)
+		},
+	},
+	methods: {
+		separator(num) {
+			return formatter.separator(num)
 		},
 	},
 }

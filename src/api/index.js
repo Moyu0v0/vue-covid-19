@@ -8,6 +8,7 @@ const base = {
 	springTravel: '/springTravel/citys',
 	springTravelQuery: '/springTravel/query',
 	springTravelhsjg: '/springTravel/hsjg',
+	wyBaseUrl: '/api3',
 }
 
 const api = {
@@ -44,6 +45,10 @@ const api = {
 		return axios.get(base.jhBaseUrl + base.springTravelhsjg, {
 			params,
 		})
+	},
+	// 获取每日数据 163的接口 需要配置代理服务器
+	getDayList() {
+		return axios.get(base.wyBaseUrl)
 	},
 }
 

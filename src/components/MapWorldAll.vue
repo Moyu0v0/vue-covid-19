@@ -7,6 +7,7 @@ export default {
 	name: 'MapWorldAll',
 	props: ['mapWorldAll'],
 	mounted() {
+		console.log(this.$charts)
 		this.$charts.MapWorld('MapWorldAll', this.mapWorldAll, '累计确诊')
 	},
 }

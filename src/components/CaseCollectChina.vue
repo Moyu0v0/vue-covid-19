@@ -22,10 +22,10 @@
 						/>
 						{{ item.name }}
 					</van-col>
-					<van-col span="5">{{ item.todayConfirm }}</van-col>
-					<van-col span="5">{{ item.totalConfirm }}</van-col>
-					<van-col span="5">{{ item.totalHeal }}</van-col>
-					<van-col span="5">{{ item.totalDead }}</van-col>
+					<van-col span="5">{{ separator(item.todayConfirm) }}</van-col>
+					<van-col span="5">{{ separator(item.totalConfirm) }}</van-col>
+					<van-col span="5">{{ separator(item.totalHeal) }}</van-col>
+					<van-col span="5">{{ separator(item.totalDead) }}</van-col>
 				</van-row>
 				<!-- 展开下属城市/区数据 -->
 				<van-row
@@ -37,10 +37,10 @@
 					<van-col span="4">
 						{{ child.name }}
 					</van-col>
-					<van-col span="5">{{ child.today.confirm }}</van-col>
-					<van-col span="5">{{ child.total.confirm }}</van-col>
-					<van-col span="5">{{ child.total.heal }}</van-col>
-					<van-col span="5">{{ child.total.dead }}</van-col>
+					<van-col span="5">{{ separator(child.today.confirm) }}</van-col>
+					<van-col span="5">{{ separator(child.total.confirm) }}</van-col>
+					<van-col span="5">{{ separator(child.total.heal) }}</van-col>
+					<van-col span="5">{{ separator(child.total.dead) }}</van-col>
 				</van-row>
 			</div>
 
@@ -57,10 +57,10 @@
 						/>
 						{{ item.name }}
 					</van-col>
-					<van-col span="5">{{ item.todayConfirm }}</van-col>
-					<van-col span="5">{{ item.totalConfirm }}</van-col>
-					<van-col span="5">{{ item.totalHeal }}</van-col>
-					<van-col span="5">{{ item.totalDead }}</van-col>
+					<van-col span="5">{{ separator(item.todayConfirm) }}</van-col>
+					<van-col span="5">{{ separator(item.totalConfirm) }}</van-col>
+					<van-col span="5">{{ separator(item.totalHeal) }}</van-col>
+					<van-col span="5">{{ separator(item.totalDead) }}</van-col>
 				</van-row>
 				<!-- 展开下属城市/区数据 -->
 				<van-row
@@ -72,10 +72,10 @@
 					<van-col span="4">
 						{{ child.name }}
 					</van-col>
-					<van-col span="5">{{ child.today.confirm }}</van-col>
-					<van-col span="5">{{ child.total.confirm }}</van-col>
-					<van-col span="5">{{ child.total.heal }}</van-col>
-					<van-col span="5">{{ child.total.dead }}</van-col>
+					<van-col span="5">{{ separator(child.today.confirm) }}</van-col>
+					<van-col span="5">{{ separator(child.total.confirm) }}</van-col>
+					<van-col span="5">{{ separator(child.total.heal) }}</van-col>
+					<van-col span="5">{{ separator(child.total.dead) }}</van-col>
 				</van-row>
 			</div>
 
@@ -88,6 +88,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import formatter from '@/plugins/formatter'
 export default {
 	name: 'CaseCollectChina',
 	data() {
@@ -102,6 +103,11 @@ export default {
 		},
 		caseCollectPart2() {
 			return this.caseCollectChina.slice(20)
+		},
+	},
+	methods: {
+		separator(num) {
+			return formatter.separator(num)
 		},
 	},
 }

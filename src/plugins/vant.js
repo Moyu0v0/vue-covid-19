@@ -20,6 +20,8 @@ import {
 	Icon,
 	Grid,
 	GridItem,
+	Swipe,
+	SwipeItem,
 } from 'vant'
 
 // 使用Vants插件
@@ -43,3 +45,5 @@ Vue.use(Steps)
 Vue.use(Icon)
 Vue.use(Grid)
 Vue.use(GridItem)
+Vue.use(Swipe)
+Vue.use(SwipeItem)

@@ -51,7 +51,6 @@ const tianAbout = {
 	},
 	mutations: {
 		handleNcov(state, data) {
-			console.log(data)
 			// 国内疫情
 			state.caseNumChina = data.desc
 			// 国外疫情

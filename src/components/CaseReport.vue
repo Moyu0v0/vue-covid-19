@@ -16,8 +16,8 @@
 					{{ item.name }}
 					<van-tag plain round type="primary">{{ item.province }}</van-tag>
 				</van-col>
-				<van-col span="7" class="blue">{{ item.todayConfirm }}</van-col>
-				<van-col span="7">{{ item.nowConfirm }}</van-col>
+				<van-col span="7" class="blue">{{ separator(item.todayConfirm) }}</van-col>
+				<van-col span="7">{{ separator(item.nowConfirm) }}</van-col>
 			</van-row>
 			<!-- 展示后面剩余的数据 -->
 			<van-row v-show="!isShow" @click="isShow = !isShow">
@@ -28,8 +28,8 @@
 					{{ item.name }}
 					<van-tag plain round type="primary">{{ item.province }}</van-tag>
 				</van-col>
-				<van-col span="7" class="blue">{{ item.todayConfirm }}</van-col>
-				<van-col span="7">{{ item.nowConfirm }}</van-col>
+				<van-col span="7" class="blue">{{ separator(item.todayConfirm) }}</van-col>
+				<van-col span="7">{{ separator(item.nowConfirm) }}</van-col>
 			</van-row>
 			<van-row v-show="isShow" @click="isShow = !isShow" class="body">
 				收起<van-icon name="arrow-up"></van-icon>
@@ -40,6 +40,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import formatter from '@/plugins/formatter'
 export default {
 	name: 'CaseReport',
 	data() {
@@ -54,6 +55,11 @@ export default {
 		},
 		caseReportPart2() {
 			return this.caseReport.slice(10)
+		},
+	},
+	methods: {
+		separator(num) {
+			return formatter.separator(num)
 		},
 	},
 }

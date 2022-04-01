@@ -12,6 +12,8 @@
 		<MapChina></MapChina>
 		<!-- 国内各地区疫情统计汇总 -->
 		<CaseCollectChina></CaseCollectChina>
+		<!--  -->
+		<Swiper></Swiper>
 		<!-- 国外疫情 -->
 		<CaseNumWorld></CaseNumWorld>
 		<!-- 世界疫情地图 -->
@@ -35,6 +37,7 @@ import CaseNumWorld from '@/components/CaseNumWorld'
 import MapWorld from '@/components/MapWorld'
 import CaseCollectWorld from '@/components/CaseCollectWorld'
 import Query from '../components/Query'
+import Swiper from '@/components/Swiper'
 
 export default {
 	name: 'Home',
@@ -49,12 +52,14 @@ export default {
 		MapWorld,
 		CaseCollectWorld,
 		Query,
+		Swiper,
 	},
 	// 发送网络请求
 	created() {
 		this.$store.dispatch('tianAbout/getNcov')
 		this.$store.dispatch('tianAbout/getNcovAboard')
 		this.$store.dispatch('tencentAbout/getNcovCity')
+		this.$store.dispatch('wyAbout/getDayList')
 	},
 }
 </script>
