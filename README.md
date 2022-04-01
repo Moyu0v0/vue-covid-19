@@ -62,10 +62,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 │   │   └── SwiperChart3.vue: 轮播图3
 │   │   └── SwiperChart4.vue: 轮播图4
 │   │── plugins
+│   │   └── china.js: 中国地图
 │   │   └── echarts.js: echarts相关
 │   │   └── formatter.js: 数据格式化
 │   │   └── nationName.js: echarts相关-世界地图中国家名中英文对照
 │   │   └── vant.js: vant相关
+│   │   └── world.js: 世界地图
 │   │── router
 │   │   └── index.js: router配置
 │   │── store
