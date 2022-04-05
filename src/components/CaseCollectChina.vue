@@ -90,7 +90,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import formatter from '@/plugins/formatter'
+import formatter from '@/utils/formatter'
 export default {
 	name: 'CaseCollectChina',
 	data() {
