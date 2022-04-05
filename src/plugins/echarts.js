@@ -208,7 +208,6 @@ export default {
 			],
 		}
 		option && myChart.setOption(option)
-		console.log('绘制折线图')
 	},
 	// 绘制柱状图
 	histogram(id, data) {
@@ -256,6 +255,5 @@ export default {
 			],
 		}
 		option && myChart.setOption(option)
-		console.log('绘制柱状图')
 	},
 }
