@@ -98,8 +98,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 1. [Axios 网络请求](http://www.axios-js.com/)
 2. [Echarts 数据可视化](https://echarts.apache.org/zh/index.html)
 3. [Vue-cli 脚手架](https://cli.vuejs.org/zh/)
-4. [Vue-router 路由](https://router.vuejs.org/zh/)
-5. [Vant UI](https://vant-contrib.gitee.io/vant/#/zh-CN/)
+4. [Vue-router ](https://router.vuejs.org/zh/)
+5. [Vuex](https://v3.vuex.vuejs.org/zh/)
+6. [Vant UI](https://vant-contrib.gitee.io/vant/#/zh-CN/)
 
 ## api 接口
 
